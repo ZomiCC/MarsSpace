@@ -1,7 +1,14 @@
-<b>git push github失败，提示：SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443</b>
+1.<b>git push github失败，提示：SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443</b>
 是因为Git的Http代理的问题，Git支持三种协议：git://、ssh://和http://，本来push的时候应该走ssh隧道的，但是因为设置了http代理，所以就走了http的代理，于是就提交不了了。
 
 <p>解决办法</p>
 在github项目在本地的根目录下打开git命令行， 
 执行下面的命令:
 git config --global --unset http.proxy
+
+2.<b>git pull
+fatal: unable to access 'https://github.com/ZomiCC/MarsSpace.git/': Empty reply from server
+</b>
+<p>解决办法</p>
+git config --global --unset-all https.proxy
+
